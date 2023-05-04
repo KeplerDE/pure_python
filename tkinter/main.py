@@ -1,25 +1,41 @@
-import tkinter as tk
+from tkinter import *
 
-class App(tk.Frame):
-    def __init__(self, master=None):
-        super().__init__(master)
-        self.master = master
-        self.pack()
-        self.create_widgets()
 
-    def create_widgets(self):
-        self.hi_button = tk.Button(self)
-        self.hi_button["text"] = "Hello World"
-        self.hi_button["command"] = self.say_hi
-        self.hi_button.pack(side="top")
+def button_clicked():
+    print("I got clicked")
+    new_text = input.get()
+    my_label.config(text=new_text)
 
-        self.quit_button = tk.Button(self, text="QUIT", fg="red",
-                              command=self.master.destroy)
-        self.quit_button.pack(side="bottom")
 
-    def say_hi(self):
-        print("Hello World!")
+window = Tk()
+window.title("My First GUI Program")
+window.minsize(width=500, height=300)
+window.config(padx=100, pady=200)
 
-root = tk.Tk()
-app = App(master=root)
-app.mainloop()
+#Label
+my_label = Label(text="I Am a Label", font=("Arial", 24, "bold"))
+my_label.config(text="New Text")
+my_label.grid(column=0, row=0)
+my_label.config(padx=50, pady=50)
+
+#Button
+button = Button(text="Click Me", command=button_clicked)
+button.grid(column=1, row=1)
+
+new_button = Button(text="New Button")
+new_button.grid(column=2, row=0)
+
+#Entry
+input = Entry(width=10)
+print(input.get())
+input.grid(column=3, row=2)
+
+
+
+
+
+
+
+
+
+window.mainloop()
