@@ -1,5 +1,13 @@
-# ---------------------------- PASSWORD GENERATOR ------------------------------- #
+from tkinter import *
 
-# ---------------------------- SAVE PASSWORD ------------------------------- #
+# Create a new Tkinter window
+window = Tk()
+window.title("Password Manager")
+window.config(padx=20, pady=20)
 
-# ---------------------------- UI SETUP ------------------------------- #
+canvas = Canvas(height=200, width=200)
+logo_image = PhotoImage(file="logo.png")
+canvas.create_image(100, 100, image=logo_image)
+canvas.pack()
+
+window.mainloop()
