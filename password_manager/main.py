@@ -18,8 +18,10 @@ def generate_password():
     shuffle(password_list)
 
     password = "".join(password_list)
-    password_entry.insert(0, password)
-    pyperclip.copy(password)
+    print(f"Your password is: {password}")
+    # password = "".join(password_list)
+    # password_entry.insert(0, password)
+    # pyperclip.copy(password)
 
 # Save password
 def save():
