@@ -1,3 +1,4 @@
+import json
 from tkinter import *
 from tkinter import messagebox
 from random import choice, randint, shuffle
@@ -28,26 +29,26 @@ def save():
     website = website_entry.get()
     email = email_entry.get()
     password = password_entry.get()
-
-
-from tkinter import messagebox
-
-
-def save():
-    website = website_entry.get()
-    email = email_entry.get()
-    password = password_entry.get()
+    new_data = {
+        website: {
+            "email": email,
+            "password": password,
+        }
+    }
 
     if len(website) == 0 or len(password) == 0:
         messagebox.showinfo(title="Ooops", message="Пожалуйста заполните поле!")
     else:
-        is_ok = messagebox.askokcancel(
-            title="Website",
-            message=f"These are the details entered:\nEmail: {email}\nPassword: {password}\nIs it ok to save?"
-        )
-        if is_ok:
-            with open('data.txt', 'a') as file:
-                file.write(f"{website}, {email}, {password}\n")
+        # with open("data.json", "r") as data_file:
+        #     #Reading old data
+        #     data = json.load(data_file)
+        #     #Updating data
+        #     data.update(new_data)
+
+        with open("data.json", "w") as data_file:
+            #Saving updated data
+            json.dump(new_data, data_file, indent=4)
+
             website_entry.delete(0, END)
             password_entry.delete(0, END)
 
